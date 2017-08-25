@@ -1,0 +1,10 @@
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'org.simpleframework', name: 'simple-xml', version: '2.7.1'
+    testCompile 'junit:junit:4.12'
+}
