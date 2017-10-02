@@ -26,7 +26,10 @@ public class Chapter extends Identifiable<Integer> implements Comparable<Chapter
         }
         SortedMap<Integer, String> verseMap = new TreeMap<>();
         for (int verseNumber = 1; verseNumber <= verses.size(); verseNumber++) {
-            verseMap.put(verseNumber, verses.get(verseNumber - 1));
+            String verse = verses.get(verseNumber - 1);
+            if (verse != null) {
+                verseMap.put(verseNumber, verse);
+            }
         }
         this.verses = Collections.unmodifiableSortedMap(verseMap);
     }
@@ -40,7 +43,17 @@ public class Chapter extends Identifiable<Integer> implements Comparable<Chapter
             throw new SemanticException("Chapter number must be positive");
         }
         this.number = number;
-        this.verses = Collections.unmodifiableSortedMap(new TreeMap<>(verses));
+        TreeMap<Integer, String> map = new TreeMap<>(verses);
+        List<Integer> nullKeys = new ArrayList<>();
+        for (Map.Entry<Integer, String> entry : map.entrySet()) {
+            if (entry.getValue() == null) {
+                nullKeys.add(entry.getKey());
+            }
+        }
+        for (Integer nullKey : nullKeys) {
+            map.remove(nullKey);
+        }
+        this.verses = Collections.unmodifiableSortedMap(map);
         if (verses.isEmpty()) {
             orderedVerses = Collections.emptyList();
             return;
