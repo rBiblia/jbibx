@@ -7,7 +7,7 @@ import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
 public class BibxSerde {
-    private BibxXmlSerde xmlSerde = new BibxXmlSerde();
+    private BibxXmlSerde xmlSerde = new BibxXmlSerde(false);
 
     public Bible deserialize(File file) {
         try (FileInputStream fileInput = new FileInputStream(file);

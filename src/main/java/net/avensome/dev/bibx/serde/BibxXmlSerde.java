@@ -12,11 +12,19 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 public class BibxXmlSerde {
-    private Persister persister = new Persister(
-            new VisitorStrategy(new ClassAttributeRemoverVisitor(), new AnnotationStrategy()),
-            new BibxRegistryMatcher(),
-            new Format(4, "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>")
-    );
+    private final Persister persister;
+
+    public BibxXmlSerde() {
+        this(false);
+    }
+
+    public BibxXmlSerde(boolean prettyOutput) {
+        Format format = new Format(prettyOutput ? 4 : 0, "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>");
+        persister = new Persister(
+                new VisitorStrategy(new ClassAttributeRemoverVisitor(), new AnnotationStrategy()),
+                new BibxRegistryMatcher(),
+                format);
+    }
 
     public Bible deserialize(InputStream stream) {
         try {
