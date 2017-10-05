@@ -54,7 +54,7 @@ public class Chapter extends Identifiable<Integer> implements Comparable<Chapter
             map.remove(nullKey);
         }
         this.verses = Collections.unmodifiableSortedMap(map);
-        if (verses.isEmpty()) {
+        if (this.verses.isEmpty()) {
             orderedVerses = Collections.emptyList();
             return;
         }

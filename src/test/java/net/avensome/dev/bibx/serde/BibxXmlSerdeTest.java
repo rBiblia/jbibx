@@ -93,6 +93,17 @@ public class BibxXmlSerdeTest {
         assertEquals("", about.getDate());
     }
 
+    @Test
+    public void omitsEmptyVerses() {
+        InputStream xml = getResourceStream("emptyVerse");
+        Bible bible = new BibxXmlSerde().deserialize(xml);
+
+        Book book = bible.getBooks().get(0);
+        Chapter chapter = book.getOrderedChapters().get(0);
+        assertEquals(0, chapter.getVerses().size());
+        assertEquals(0, chapter.getOrderedVerses().size());
+    }
+
     private String getResource(String name) {
         try {
             Path path = Paths.get("src/test/resources", name + ".xml");

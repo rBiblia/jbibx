@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<bibx>
+    <about>
+        <language>pl</language>
+        <authorised>1</authorised>
+        <name>Biblia Testowa</name>
+        <description>Lorem ipsum dolor sit amet</description>
+        <shortname>BT</shortname>
+        <date>2017</date>
+    </about>
+    <translation>
+        <book id="gen">
+            <chapter id="1">
+                <verse id="1"/>
+            </chapter>
+        </book>
+    </translation>
+</bibx>

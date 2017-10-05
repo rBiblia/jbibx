@@ -57,6 +57,8 @@ public class ChapterTest {
         map.put(2, null);
         map.put(3, "dolor sit amet");
         Chapter chapter = new Chapter(1, map);
+        assertEquals(2, chapter.getVerses().size());
+        assertEquals(3, chapter.getOrderedVerses().size());
         chapter.getVerse(2);
     }
 }
