@@ -8,6 +8,9 @@ public class BooleanAsIntConverter implements Converter<Boolean> {
     @Override
     public Boolean read(InputNode node) throws Exception {
         String stringValue = node.getValue();
+        if (stringValue == null) {
+            return false;
+        }
         int intValue = Integer.parseInt(stringValue);
         return intValue != 0;
     }

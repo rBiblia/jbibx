@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<bibx>
+    <about>
+        <language></language>
+        <authorised>0</authorised>
+        <name></name>
+        <description></description>
+        <shortname></shortname>
+        <date></date>
+    </about>
+    <translation>
+        <book id="gen">
+            <chapter id="1">
+                <verse id="1">Verse</verse>
+            </chapter>
+        </book>
+    </translation>
+</bibx>

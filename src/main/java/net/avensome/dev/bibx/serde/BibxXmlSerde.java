@@ -15,7 +15,7 @@ public class BibxXmlSerde {
     private Persister persister = new Persister(
             new VisitorStrategy(new ClassAttributeRemoverVisitor(), new AnnotationStrategy()),
             new BibxRegistryMatcher(),
-            new Format("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>")
+            new Format(4, "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>")
     );
 
     public Bible deserialize(InputStream stream) {

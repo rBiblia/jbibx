@@ -5,23 +5,23 @@ import org.simpleframework.xml.Element;
 import org.simpleframework.xml.convert.Convert;
 
 public class About {
-    @Element(name = "language")
+    @Element(name = "language", required = false)
     private final String language;
 
-    @Element(name = "authorised")
+    @Element(name = "authorised", required = false)
     @Convert(BooleanAsIntConverter.class)
     private final Boolean authorized;
 
-    @Element(name = "name")
+    @Element(name = "name", required = false)
     private final String name;
 
-    @Element(name = "description")
+    @Element(name = "description", required = false)
     private final String description;
 
-    @Element(name = "shortname")
+    @Element(name = "shortname", required = false)
     private final String shortName;
 
-    @Element(name = "date")
+    @Element(name = "date", required = false)
     private final String date;
 
     public About(
@@ -32,12 +32,12 @@ public class About {
             @Element(name = "shortname") String shortName,
             @Element(name = "date") String date
     ) {
-        this.language = language;
+        this.language = language == null ? "" : language;
         this.authorized = authorised;
-        this.name = name;
-        this.description = description;
-        this.shortName = shortName;
-        this.date = date;
+        this.name = name == null ? "" : name;
+        this.description = description == null ? "" : description;
+        this.shortName = shortName == null ? "" : shortName;
+        this.date = date == null ? "" : date;
     }
 
     public String getLanguage() {
