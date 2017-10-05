@@ -5,7 +5,7 @@ import org.simpleframework.xml.ElementList;
 
 import java.util.*;
 
-public class Book extends Identifiable<BookID> {
+public class Book extends Identifiable<BookID> implements Comparable<Book> {
     @Attribute(name = "id")
     private final BookID id;
 
@@ -40,5 +40,10 @@ public class Book extends Identifiable<BookID> {
             throw new NoSuchElementException(String.format("Book %s doesn't contain chapter %d", id, number));
         }
         return chapters.get(number);
+    }
+
+    @Override
+    public int compareTo(Book that) {
+        return this.id.compareTo(that.id);
     }
 }

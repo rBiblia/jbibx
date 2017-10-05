@@ -7,10 +7,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static org.junit.Assert.*;
 
@@ -53,15 +50,15 @@ public class BibxXmlSerdeTest {
         assertEquals("BT", about.getShortName());
         assertEquals("2017", about.getDate());
 
-        List<Book> books = bible.getBooks();
+        SortedSet<Book> books = bible.getBooks();
         assertEquals(2, books.size());
 
-        Book genesis = books.get(0);  // FIXME books should be gettable by IDs
+        Book genesis = bible.getBook(BookID.OT_GEN);
         assertEquals(2, genesis.getOrderedChapters().size());
         assertEquals(Arrays.asList("Verse 1", "Verse 2"), genesis.getChapter(1).getOrderedVerses());
         assertEquals(Arrays.asList("Lorem ipsum", "dolor sit amet"), genesis.getChapter(2).getOrderedVerses());
 
-        Book exodus = books.get(1);
+        Book exodus = bible.getBook(BookID.OT_EXO);
         assertEquals(0, exodus.getOrderedChapters().size());
     }
 
@@ -98,7 +95,7 @@ public class BibxXmlSerdeTest {
         InputStream xml = getResourceStream("emptyVerse");
         Bible bible = new BibxXmlSerde().deserialize(xml);
 
-        Book book = bible.getBooks().get(0);
+        Book book = bible.getBooks().first();
         Chapter chapter = book.getOrderedChapters().get(0);
         assertEquals(0, chapter.getVerses().size());
         assertEquals(0, chapter.getOrderedVerses().size());
