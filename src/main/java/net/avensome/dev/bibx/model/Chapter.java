@@ -97,4 +97,21 @@ public class Chapter extends Identifiable<Integer> implements Comparable<Chapter
         }
         return verses.get(number);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Chapter chapter = (Chapter) o;
+
+        return number == chapter.number && verses.equals(chapter.verses);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = number;
+        result = 31 * result + verses.hashCode();
+        return result;
+    }
 }

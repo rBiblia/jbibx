@@ -63,4 +63,30 @@ public class About {
     public String getDate() {
         return date;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        About about = (About) o;
+
+        if (!language.equals(about.language)) return false;
+        if (!authorized.equals(about.authorized)) return false;
+        if (!name.equals(about.name)) return false;
+        if (!description.equals(about.description)) return false;
+        if (!shortName.equals(about.shortName)) return false;
+        return date.equals(about.date);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = language.hashCode();
+        result = 31 * result + authorized.hashCode();
+        result = 31 * result + name.hashCode();
+        result = 31 * result + description.hashCode();
+        result = 31 * result + shortName.hashCode();
+        result = 31 * result + date.hashCode();
+        return result;
+    }
 }

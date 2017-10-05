@@ -44,4 +44,21 @@ public class Bible {
     public Set<BookID> getBookIds() {
         return Collections.unmodifiableSet((books.keySet()));
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Bible bible = (Bible) o;
+
+        return about.equals(bible.about) && books.equals(bible.books);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = about.hashCode();
+        result = 31 * result + books.hashCode();
+        return result;
+    }
 }

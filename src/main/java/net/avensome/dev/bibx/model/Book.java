@@ -46,4 +46,21 @@ public class Book extends Identifiable<BookID> implements Comparable<Book> {
     public int compareTo(Book that) {
         return this.id.compareTo(that.id);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Book book = (Book) o;
+
+        return id == book.id && chapters.equals(book.chapters);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id.hashCode();
+        result = 31 * result + chapters.hashCode();
+        return result;
+    }
 }
