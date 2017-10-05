@@ -61,4 +61,14 @@ public class ChapterTest {
         assertEquals(3, chapter.getOrderedVerses().size());
         chapter.getVerse(2);
     }
+
+    @Test(expected = SemanticException.class)
+    public void rejectsNegativeChapterNumbers() {
+        new Chapter(-1);
+    }
+
+    @Test(expected = SemanticException.class)
+    public void rejectsZeroChapterNumber() {
+        new Chapter(0);
+    }
 }
