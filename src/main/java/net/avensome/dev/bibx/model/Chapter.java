@@ -13,7 +13,7 @@ public class Chapter extends Identifiable<Integer> implements Comparable<Chapter
     private final List<String> orderedVerses;
 
     public Chapter(int number) {
-        this(number, Collections.emptyMap());
+        this(number, Collections.<Integer, String>emptyMap());
     }
 
     public Chapter(int number, List<String> verses) {
@@ -21,7 +21,7 @@ public class Chapter extends Identifiable<Integer> implements Comparable<Chapter
         this.orderedVerses = Collections.unmodifiableList(new ArrayList<>(verses));
         if (verses.isEmpty()) {
             //noinspection unchecked
-            this.verses = Collections.emptySortedMap();
+            this.verses = Collections.unmodifiableSortedMap(new TreeMap<Integer, String>());
             return;
         }
         SortedMap<Integer, String> verseMap = new TreeMap<>();

@@ -13,7 +13,7 @@ public class Book extends Identifiable<BookID> implements Comparable<Book> {
     private final List<Chapter> orderedChapters;
 
     public Book(BookID id) {
-        this(id, Collections.emptyList());
+        this(id, Collections.<Chapter>emptyList());
     }
 
     public Book(
