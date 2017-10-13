@@ -1,4 +1,4 @@
-package net.avensome.dev.bibx.serde.helper;
+package net.avensome.dev.jbibx.serde.helper;
 
 import org.simpleframework.xml.strategy.Type;
 import org.simpleframework.xml.strategy.Visitor;

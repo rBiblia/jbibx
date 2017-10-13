@@ -1,4 +1,4 @@
-package net.avensome.dev.bibx.model;
+package net.avensome.dev.jbibx.model;
 
 import java.util.ArrayList;
 import java.util.HashMap;

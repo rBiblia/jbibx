@@ -1,4 +1,4 @@
-package net.avensome.dev.bibx.serde;
+package net.avensome.dev.jbibx.serde;
 
 public class SerdeException extends RuntimeException {
     public SerdeException() {

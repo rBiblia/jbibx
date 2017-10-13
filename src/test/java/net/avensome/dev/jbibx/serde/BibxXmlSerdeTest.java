@@ -1,6 +1,6 @@
-package net.avensome.dev.bibx.serde;
+package net.avensome.dev.jbibx.serde;
 
-import net.avensome.dev.bibx.model.*;
+import net.avensome.dev.jbibx.model.*;
 import org.junit.Test;
 
 import java.io.*;

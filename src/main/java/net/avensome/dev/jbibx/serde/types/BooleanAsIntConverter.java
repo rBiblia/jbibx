@@ -1,4 +1,4 @@
-package net.avensome.dev.bibx.serde.types;
+package net.avensome.dev.jbibx.serde.types;
 
 import org.simpleframework.xml.convert.Converter;
 import org.simpleframework.xml.stream.InputNode;

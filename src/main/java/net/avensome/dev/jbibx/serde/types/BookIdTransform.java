@@ -1,6 +1,6 @@
-package net.avensome.dev.bibx.serde.types;
+package net.avensome.dev.jbibx.serde.types;
 
-import net.avensome.dev.bibx.model.BookID;
+import net.avensome.dev.jbibx.model.BookID;
 import org.simpleframework.xml.transform.Transform;
 
 public class BookIdTransform implements Transform<BookID> {

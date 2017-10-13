@@ -1,8 +1,8 @@
-package net.avensome.dev.bibx.serde;
+package net.avensome.dev.jbibx.serde;
 
-import net.avensome.dev.bibx.model.Bible;
-import net.avensome.dev.bibx.serde.helper.ClassAttributeRemoverVisitor;
-import net.avensome.dev.bibx.serde.types.BibxRegistryMatcher;
+import net.avensome.dev.jbibx.model.Bible;
+import net.avensome.dev.jbibx.serde.helper.ClassAttributeRemoverVisitor;
+import net.avensome.dev.jbibx.serde.types.BibxRegistryMatcher;
 import org.simpleframework.xml.convert.AnnotationStrategy;
 import org.simpleframework.xml.core.Persister;
 import org.simpleframework.xml.strategy.VisitorStrategy;

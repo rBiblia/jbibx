@@ -1,8 +1,10 @@
-package net.avensome.dev.bibx.serde;
+package net.avensome.dev.jbibx.serde;
 
-import net.avensome.dev.bibx.model.Bible;
+import net.avensome.dev.jbibx.model.Bible;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 

@@ -1,6 +1,6 @@
-package net.avensome.dev.bibx.model;
+package net.avensome.dev.jbibx.model;
 
-import net.avensome.dev.bibx.serde.types.BooleanAsIntConverter;
+import net.avensome.dev.jbibx.serde.types.BooleanAsIntConverter;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.convert.Convert;
 
