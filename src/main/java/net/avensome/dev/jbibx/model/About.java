@@ -24,20 +24,29 @@ public class About {
     @Element(name = "date", required = false)
     private final String date;
 
+    @Element(name = "author", required = false)
+    private final String author;
+
     public About(
             @Element(name = "language") String language,
-            @Element(name = "authorised") boolean authorised,
+            @Element(name = "authorised") boolean authorized,
             @Element(name = "name") String name,
             @Element(name = "description") String description,
             @Element(name = "shortname") String shortName,
-            @Element(name = "date") String date
+            @Element(name = "date") String date,
+            @Element(name = "author", required = false) String author
     ) {
         this.language = language == null ? "" : language;
-        this.authorized = authorised;
+        this.authorized = authorized;
         this.name = name == null ? "" : name;
         this.description = description == null ? "" : description;
         this.shortName = shortName == null ? "" : shortName;
         this.date = date == null ? "" : date;
+        this.author = author == null ? "" : author;
+    }
+
+    public About() {
+        this(null, false, null, null, null, null, null);
     }
 
     public String getLanguage() {
@@ -64,6 +73,10 @@ public class About {
         return date;
     }
 
+    public String getAuthor() {
+        return author;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -76,7 +89,8 @@ public class About {
         if (!name.equals(about.name)) return false;
         if (!description.equals(about.description)) return false;
         if (!shortName.equals(about.shortName)) return false;
-        return date.equals(about.date);
+        if (!date.equals(about.date)) return false;
+        return author.equals(about.author);
     }
 
     @Override
@@ -87,6 +101,7 @@ public class About {
         result = 31 * result + description.hashCode();
         result = 31 * result + shortName.hashCode();
         result = 31 * result + date.hashCode();
+        result = 31 * result + author.hashCode();
         return result;
     }
 }

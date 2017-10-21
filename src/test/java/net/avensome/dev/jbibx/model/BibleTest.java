@@ -9,7 +9,7 @@ public class BibleTest {
     public void rejectsDuplicateBooks() {
         Book book1 = new Book(BookID.OT_GEN);
         Book book2 = new Book(BookID.OT_GEN);
-        About about = new About(null, false, null, null, null, null);
+        About about = new About(null, false, null, null, null, null, null);
         new Bible(about, Arrays.asList(book1, book2));
     }
 }

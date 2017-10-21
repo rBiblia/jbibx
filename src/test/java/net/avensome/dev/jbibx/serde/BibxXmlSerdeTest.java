@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
 public class BibxXmlSerdeTest {
     @Test
     public void serializesXml() {
-        About about = new About("pl", true, "Biblia Testowa", "Lorem ipsum dolor sit amet", "BT", "2017");
+        About about = new About("pl", true, "Biblia Testowa", "Lorem ipsum dolor sit amet", "BT", "2017", "Kowalski");
 
         Map<Integer, String> verses = new HashMap<>();
         verses.put(2, "Verse 2");
@@ -64,7 +64,7 @@ public class BibxXmlSerdeTest {
 
     @Test
     public void serializesCompressedXml() {
-        About about = new About("pl", true, "Biblia Testowa", "Lorem ipsum dolor sit amet", "BT", "2017");
+        About about = new About("pl", true, "Biblia Testowa", "Lorem ipsum dolor sit amet", "BT", "2017", "Kowalski");
 
         Map<Integer, String> verses = new HashMap<>();
         verses.put(2, "Verse 2");
@@ -99,6 +99,7 @@ public class BibxXmlSerdeTest {
         assertEquals("Lorem ipsum dolor sit amet", about.getDescription());
         assertEquals("BT", about.getShortName());
         assertEquals("2017", about.getDate());
+        assertEquals("Kowalski", about.getAuthor());
 
         SortedSet<Book> books = bible.getBooks();
         assertEquals(2, books.size());
@@ -115,6 +116,20 @@ public class BibxXmlSerdeTest {
     @Test
     public void deserializesEmptyAbout() {
         InputStream xml = getResourceStream("emptyAbout");
+        Bible bible = new BibxXmlSerde(true).deserialize(xml);
+
+        About about = bible.getAbout();
+        assertEquals("", about.getLanguage());
+        assertFalse(about.getAuthorized());
+        assertEquals("", about.getName());
+        assertEquals("", about.getDescription());
+        assertEquals("", about.getShortName());
+        assertEquals("", about.getDate());
+    }
+
+    @Test
+    public void missingAboutFieldsAreOkay() {
+        InputStream xml = getResourceStream("noAboutContents");
         Bible bible = new BibxXmlSerde(true).deserialize(xml);
 
         About about = bible.getAbout();
